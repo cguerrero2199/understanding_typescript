@@ -1,0 +1,4 @@
+How to compile:
+
+`tsc {typescript_filename.ts}`
+
