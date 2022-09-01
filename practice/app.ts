@@ -1,11 +1,12 @@
-function add(n1: number, n2: number): number {
-    return n1 + n2;
-}
+//ts version of speaclized object type
+//const person: {
+//    name: string;
+//    age: number;
+//} = {
+    
+const person = {
+    name: "Cesar",
+    age: 23
+};
 
-//this throws error
-//const x1 = '5';
-const x1 = 5;
-const x2 = 7;
-
-const result = add(x1, x2);
-console.log(result);
+console.log(person);
