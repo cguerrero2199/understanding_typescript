@@ -1,5 +1,8 @@
+//type alias
+type Combinable = number | string;
+
 //Union type
-function combine(n1: number | string, n2: number | string) {
+function combine(n1: Combinable, n2: Combinable) {
     let result;
     if (typeof n1 === 'number' && typeof n2 === 'number') {
         result = n1 + n2;
