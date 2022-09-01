@@ -1,17 +1,15 @@
-//TYPES 
-// any keyword can be used to any type to be assigned
-//ts version of speaclized object type
-//const person: {
-//    name: string;
-//    age: number;
-//} = {
-var person = {
-    name: "Cesar",
-    age: 23,
-    hobbies: ["Programming", "Reading"]
-};
-console.log(person);
-for (var _i = 0, _a = person.hobbies; _i < _a.length; _i++) {
-    var hobby = _a[_i];
-    console.log(hobby.toUpperCase());
+//Union type
+function combine(n1, n2) {
+    var result;
+    if (typeof n1 === 'number' && typeof n2 === 'number') {
+        result = n1 + n2;
+    }
+    else {
+        result = n1.toString() + n2.toString();
+    }
+    return result;
 }
+var ages = combine(23, 23);
+console.log(ages);
+var names = combine('cesar', 'marisa');
+console.log(names);
