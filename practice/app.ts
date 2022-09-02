@@ -1,21 +1,27 @@
-//type alias
-type Combinable = number | string;
-
-//Union type
-function combine(n1: Combinable, n2: Combinable) {
-    let result;
-    if (typeof n1 === 'number' && typeof n2 === 'number') {
-        result = n1 + n2;
-    }
-    else {
-        result = n1.toString() + n2.toString();
-    }
-
-    return result;
+function add(n1: number, n2: number): number {
+    return n1 + n2;
 }
 
-const ages = combine(23, 23);
-console.log(ages);
+function addAndHandle(n1: number, n2: number, cb: (num: number) => void) {
+    const result = n1 + n2;
+    cb(result);
+}
 
-const names = combine('cesar', 'marisa');
-console.log(names);
+function printResult(num: number): void {
+    console.log('Result: ' + num);
+}
+
+//Using a variable as a typed function: take any function that uses two parameters that are numbers that will return a number
+let combineValues: (a: number, b: number) => number;
+
+//pointer to function, can execute function through variable
+combineValues = add;
+
+//Wont work because printResult doesnt take 2 number parameters nor returns a number as a return type
+//combineValues = printResult;
+
+console.log(combineValues(4, 5))
+
+addAndHandle(10, 20, (result) => {
+    console.log(result);
+});
