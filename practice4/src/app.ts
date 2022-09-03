@@ -1,8 +1,20 @@
-//going to the root of the project and running tsc --init it will compile all ts files in the directory
-//can combine with --watch | -w to automatically compile all ts files after a change. 
+//Author: Cesar Guerrero
 
-const button = document.querySelector('button')!;
+const userName = 'Cesar';
+let age = 23
 
-button.addEventListener('click', () => {
-    console.log('Clicked!');
-});
+/*const add = (a: number, b: number) => {
+    return a + b;
+};*/
+
+const add = (a: number, b: number) => a + b;
+
+const button = document.querySelector('button');
+if (button) {
+    //button.addEventListener('click', event => console.log(event));
+    button.addEventListener('click', (event) => {
+        console.log(event);
+    });
+}
+
+console.log(add(1, 2));
