@@ -2,12 +2,15 @@
 
 class Department {
     // private name: string;
-    private employees: string[] = [];
+    protected employees: string[] = [];
 
     // Setting a scope on the constructor for a parameter enables use of access modifers. 
     // I.E no need to define variable in the class and pass the constructor parameter to it. 
     // A property will be auto generated with the same name as the constructor parameter.
-    constructor(public name: string) {
+    constructor(
+        public name: string, 
+        private readonly id: string = '1'
+    ) {
         //this.name = n;
     }
 
@@ -25,7 +28,42 @@ class Department {
     }
 }
 
-const eng = new Department('Engineering');
+class ITDepartment extends Department {
+    admins: string[];
+
+    constructor(id: string, admins: string[]) {
+        super(id, 'IT');
+        this.admins = admins;
+    }
+}
+
+class Accounting extends Department {
+    private lastReport: string;
+
+    constructor(id: string, private reports: string[]) {
+        super(id, 'Accounting');
+        this.lastReport = reports[0];
+    }
+
+    addEmployee(name: string): void {
+        if (name === 'Max') {
+            return;
+        }
+
+        this.employees.push(name);
+    }
+
+    addReport(text: string) {
+        this.reports.push(text);
+        this.lastReport = text;
+    }
+
+    printReports() {
+        console.log(this.reports);
+    }
+}
+
+const eng = new ITDepartment('Engineering', ['Ceeze']);
 
 eng.addEmployee('Cesar');
 eng.addEmployee('Andrew');
@@ -33,3 +71,15 @@ eng.addEmployee('Andrew');
 eng.describe();
 
 eng.printEmployeeInformation();
+
+console.log(eng);
+
+const acc = new Accounting('d2', []);
+
+acc.addReport('Error something went wrong');
+
+acc.addEmployee('Max');
+acc.addEmployee('Cesar!');
+
+acc.printReports();
+acc.printEmployeeInformation();
